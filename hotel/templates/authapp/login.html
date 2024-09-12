@@ -1,0 +1,70 @@
+{% extends "app/base.html" %}
+{% load static %}
+    {% block title %}
+    Log In
+    {% endblock title %}
+
+    
+      {% block content %}
+    <section class="section">
+      <form action="/auth/login/" method="post">
+        {% for message in messages %}
+        <!--=========  Alert message from bootstrap  ========== -->
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+        
+      {% endfor %}
+        
+        {% csrf_token %}
+            <h2>Login</h2>
+            <div class="inputbox">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input type="email" class="form-control p-2" name="email" id="email" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input type="password" class="form-control p-2" name="pass1" id="pass1" required>
+                <label for="pass1">Password</label>
+            </div>
+            <div class="forgate">
+                <label for=""><input type="checkbox">Reminder me</label>
+                <a href="#">Forget Password</a>
+            </div>
+            <button class="btn-outline-dark" type="submit">Sign In</button>
+            <div class="login">
+                 <p>Allrady login/<a href="/auth/signup/">signin</a></p>
+            </div>
+               
+        </from>
+      </section>
+</html>
+      {% comment %} <div class="card bg-body-secondary p-5">
+        <form action="/auth/login/" method="post">
+        {% csrf_token %}
+        <h1 class="text-dark fs-2"> Log In</h1>
+        <label for="email" class="p-2">Email</label>
+        <div class="form-group">
+            <input type="email" class="form-control p-2" name="email" id="email" required>
+        </div>
+        <label for="pass1">Password</label>
+        <div class="form-group">
+            <input type="password" class="form-control p-2" name="pass1" id="pass1" required>
+        </div>
+        <button class="btn-outline-dark" type="submit">Sign In</button>
+        <br>
+        <br>
+        Create Account? <a href="/auth/signup/"></a>
+
+    </form> {% endcomment %}
+
+      {% endblock content %}
+
+      {% block body %}
+      
+      {% endblock body %}
+</body>
+
+</html>
